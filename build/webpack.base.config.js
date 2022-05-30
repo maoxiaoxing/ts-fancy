@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/tpl/index.html'
+      template: './tpl/index.html'
     }),
     new ForkTsCheckerWebpackPlugin()
   ]
