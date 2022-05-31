@@ -17,4 +17,3 @@ type MyOmit<T, K> = {
 
 export type MyReadonly2<T, K extends keyof T = keyof T> = Readonly<MyPick<T, K>> & MyOmit<T, K>
 
-
