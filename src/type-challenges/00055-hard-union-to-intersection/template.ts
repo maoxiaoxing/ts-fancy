@@ -9,7 +9,7 @@ type A = (b: number) => void
 type T<U> = U
 
 type f = 'foo' | 42 | true
-type s = Equal<f, T<'foo'> | T<42> | T<true>>
+type s = Equal<T<f>, T<'foo'> | T<42> | T<true>>
 
 type b = ToUnionOfFunction<'ff'| 1>
 type C = UnionToIntersection<f>
