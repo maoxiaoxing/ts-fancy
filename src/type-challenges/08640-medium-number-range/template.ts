@@ -9,10 +9,12 @@ export type Subtract<M extends number, S extends number> =
   ToArray<M> extends [...ToArray<S>, ...infer R]
     ? R['length'] : never
 
-export type A<L extends number, H extends number, R extends number[] = []> = 
-  [...R, [...ToArray<H>]['length']]['length'] extends Subtract<H, L>
-    ? [...R, [...ToArray<H>]['length']] : A<L, Subtract<H, 1>, R>
-export type NumberRange<L extends number, H extends number> = [...A<L, H>][number]
+// type Tool<L extends number, H extends number, Arr extends any[] = [...ToArray<L>], U = never> = 
+//   Subtract<H, L> extends Arr['length']
+//     ? H | U : Tool<L, H, Arr['length'] extends L ? [...Arr, unknown] : ToArray<L>, U | Arr['length']>
+// export type NumberRange<L extends number, H extends number> = Tool<L, H>
 
-type a = [1, 2] as const
-type b = typeof a
+export type NumberRange<L extends number, H extends number, R extends number[] = [], P extends any[] = []> = P['length'] extends H 
+    ? R[number] | H : NumberRange<L, H, P['length'] extends L ? [...R, L] : R['length'] extends 0 ? R : [...R, P['length']], [...P, 1]>
+
+
